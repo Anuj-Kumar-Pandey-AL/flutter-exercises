@@ -2,24 +2,21 @@ import 'package:rxdart/rxdart.dart';
 import 'dart:async';
 
 void main() {
-  final subject = BehaviorSubject<int>();
+  final behaviorSubject = BehaviorSubject<int>();
 
-  subject.add(1);
-  subject.add(2);
+  behaviorSubject.add(1);
+  behaviorSubject.add(2);
 
-  subject.stream.listen((val) => print(val));
-  subject.stream.listen((val) => print(val));
+  behaviorSubject.stream.listen((val) => print(val));
+  behaviorSubject.stream.listen((val) => print(val));
 
-  subject.add(3);
+  behaviorSubject.add(3);
 
   final streamController = StreamController<int>();
   streamController.add(1);
   streamController.add(2);
 
-  final stream = streamController.stream;
-  stream.listen((int number) {
-    print(number);
-  });
+  streamController.stream.listen((val) => print(val));
 
   streamController.add(3);
   streamController.close();
